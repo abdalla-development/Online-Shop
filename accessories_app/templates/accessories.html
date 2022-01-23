@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% for message in messages%}
+    <br>
+    {% if messages %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <img width="" height="" src="{%static 'svg/cart-check.svg'%}" alt="" /> {{ message }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endif %}
+{% endfor %}
+  <form  method="POST">
+  {% csrf_token %}
+    <br>
+    {%for item in accessories_all%}
+    <div class="row">
+      <div class="col-6">
+        <a href="{% url 'accessory' item.id%}"><img name="{{item.image}}" src="{{item.image}}" alt="" width="300" height="240"></a>
+      </div>
+      <div class="col-6">
+        <h4 name="item_name">{{item.item_name }}</h4>
+        <h5>Price</h5>
+        <p name="price">{{item.price}} SDG</p>
+      </div>
+    </div>
+    <hr>
+    <br>
+    {% endfor %}
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+          {% if accessories_all.paginator.num_pages == 1%}
+            <li class="page-item"><a class="page-link" href="?page=1">1</a></li>
+
+          {% elif accessories_all.paginator.num_pages == 2%}
+            <li class="page-item"><a class="page-link" href="?page=1">1</a></li>
+            <li class="page-item"><a class="page-link" href="?page={{ accessories_all.paginator.num_pages }}">2</a></li>
+
+          {% elif accessories_all.paginator.num_pages == 3%}
+            <li class="page-item"><a class="page-link" href="?page=1">1</a></li>
+            <li class="page-item"><a class="page-link" href="?page=2">2</a></li>
+            <li class="page-item"><a class="page-link" href="?page={{ accessories_all.paginator.num_pages }}">{{ accessories_all.paginator.num_pages }}</a></li>
+
+          {% endif %}
+        </ul>
+      </nav>
+  </form>
+
+  </section> 
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block content %}
+  <!-- Items -->
+  
+  <section>
+    </br>
+    <form method="POST">
+      {% for item in cart_all %}
+      <div class="row">
+        <div class="col-6">
+          <img src="{{item.image}}" alt="" width="300" height="240">
+        </div>
+        <div class="col-6">
+          <h4>{{item.item_name}}</h4>
+          <h5>Price</h5>
+          <h5>{{item.price}}</h5>
+          <h5>Sizes</h5>
+          <h5>{{item.sizes}}</h5>
+          <h5>Color</h5>
+          <h5>{{item.colors}}</h5>
+          <h5>Amount</h5>
+          <h5>{{item.amount}}</h5>
+          <h5>{{item.description}}</h5>
+          
+          <a class="btn btn-outline-danger float-right" href="{% url 'delete' item.id%}" method="POST">Delete item</a>
+          
+          <br><br>
+        </div>
+        
+      </div>
+      {% endfor %}
+      </form>
+      
+      <hr>
+      <h4>Your Total is {{total}} SDG</h4>
+      
+      <a class="btn btn-outline-success float-right" href="{% url 'checkout' %}" method="" type="submit">Checkout</a>
+      <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+          {% if cart_all.paginator.num_pages == 1%}
+            <li class="page-item"><a class="page-link" href="?page=1">1</a></li>
+
+          {% elif cart_all.paginator.num_pages == 2%}
+            <li class="page-item"><a class="page-link" href="?page=1">1</a></li>
+            <li class="page-item"><a class="page-link" href="?page={{ cart_all.paginator.num_pages }}">2</a></li>
+
+          {% elif cart_all.paginator.num_pages == 3%}
+            <li class="page-item"><a class="page-link" href="?page=1">1</a></li>
+            <li class="page-item"><a class="page-link" href="?page=2">2</a></li>
+            <li class="page-item"><a class="page-link" href="?page={{ cart_all.paginator.num_pages }}">{{ cart_all.paginator.num_pages }}</a></li>
+
+          {% endif %}
+        </ul>
+      </nav>
+    
+
+
+  </section>
+
+{%endblock%}

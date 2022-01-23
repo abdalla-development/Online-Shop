@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+  <!-- Display a payment form -->
+  <div class="row">
+  
+    {% if items_in_cart != 0%}
+      {% for obj in cart_all%}
+      <div class='col-4'>
+      <br><br>
+        <img
+              src="{{obj.image}}"
+              alt="The cover of Stubborn Attachments"
+              width="300"
+              height="240"
+        />
+        </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+  <section class="text-center"> 
+      <div class="product">
+      <br><br>
+        <div class="description">
+          <h3>Your Total is</h3>
+          <h5>$ {{total}}</h5>
+        </div>
+      </div>
+      <form  action="{% url 'charge' %}" method="POST">
+         {% csrf_token %}
+        <button class="btn btn-outline-success" type="submit"> Procede to Checkout</button>
+      </form>
+    </section>
+{%endblock%}
