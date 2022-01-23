@@ -1,2 +1,8 @@
 # Online-Shop
 Portfolio
+
+    • This project was the first to work on in order to practically work with Django, as from my last online shopping project that I had worked on using Flask framework this time I had implemented this project using Django in order to make the transfer that might not be describable as smooth for the first one, but it will pave the way for more concrete understanding.
+    • There were so many hard parts in the beginning as figuring out how to work with the new framework such as the files of forms, modules, views and URLs going all the way up to the authentication, pagination to obtain a fully functional website.
+    • The part that could be easy in general the Django is much easier and flexible to work with that Flask as long as you have the good foundation to understand the complicity of it, but it easier to modify and you can take the database as a good example.
+    • The biggest learn that you can say Django has a limitless features and functionality you just need to define your approach and then you can accomplish it by many methods.
+    • The future integrations for this project  could be addressed as applying more URLs restrictions, adding ongoing orders page and emailing the admin of paid orders along with creating an admin app the will use Front-End to add and modify products, at last I faced an issue with the added cart item as each item will be linked to a specific user, but what if the user is not logged on, he can be able to add items to the cart but to be specific I used a function to get the IP address of the user and the issue was as this is only testing using local server the IP will be the same so a testing for the IP designator on live server is a must. 
